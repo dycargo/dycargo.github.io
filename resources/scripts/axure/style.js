@@ -307,16 +307,17 @@
 
         if(!state) state = _generateState(elementId);
 
-
-        var style = $obj(elementId).style;
+        var obj = $obj(elementId);
+        var style = obj.style;
         var stateStyle = state == NORMAL ? style : style && style.stateStyles && style.stateStyles[state];
         if(!stateStyle && !_style.getElementImageOverride(elementId, state)) {
             state = _progessState(state);
             if(state) _updateElementIdImageStyle(elementId, state);
             return;
-        }
+        } 
 
         var computedStyle = _style.computeAllOverrides(elementId, undefined, state, $ax.adaptive.currentViewId);
+        var defaultStyle = $ax.document.stylesheet.defaultStyles[obj.type];
 
         var query = $jobj($ax.repeater.applySuffixToElementId(elementId, '_img'));
         var borderId = $ax.repeater.applySuffixToElementId(elementId, '_border');
@@ -331,19 +332,20 @@
         borderQuery.css('position', 'absolute');
         query.attr('style', '');
 
-        var borderWidth = computedStyle.borderWidth;
-        if(borderWidth) {
+        var borderWidth = Number(computedStyle.borderWidth || style.borderWidth || defaultStyle.borderWidth);
+        var hasBorderWidth = borderWidth > 0;
+        if(hasBorderWidth) {
             borderQuery.css('border-style', 'solid');
             borderQuery.css('border-width', borderWidth + 'px');
             borderQuery.css('width', style.size.width - borderWidth * 2);
             borderQuery.css('height', style.size.height - borderWidth * 2);
         }
 
-        var linePattern = computedStyle.linePattern;
-        if(linePattern) borderQuery.css('border-style', linePattern);
+        var linePattern = computedStyle.linePattern || style.linePattern || defaultStyle.linePattern;
+        if(hasBorderWidth && linePattern) borderQuery.css('border-style', linePattern);
 
-        var borderFill = computedStyle.borderFill;
-        if(borderFill) {
+        var borderFill = computedStyle.borderFill || style.borderFill || defaultStyle.borderFill;
+        if(hasBorderWidth && borderFill) {
             var color = borderFill.fillType == 'solid' ? borderFill.color :
                 borderFill.fillType == 'linearGradient' ? borderFill.colors[0].color : 0;
 
@@ -359,13 +361,13 @@
             borderQuery.css('border-color', _rgbaToFunc(red, green, blue, alpha));
         }
 
-        var cornerRadiusTopLeft = computedStyle.cornerRadiusTopLeft;
+        var cornerRadiusTopLeft = computedStyle.cornerRadiusTopLeft || style.cornerRadiusTopLeft || defaultStyle.cornerRadiusTopLeft;
         if(cornerRadiusTopLeft) {
             query.css('border-radius', cornerRadiusTopLeft + 'px');
             borderQuery.css('border-radius', cornerRadiusTopLeft + 'px');
         }
 
-        var outerShadow = computedStyle.outerShadow;
+        var outerShadow = computedStyle.outerShadow || style.outerShadow || defaultStyle.outerShadow;
         if(outerShadow && outerShadow.on) {
             var arg = '';
             arg += outerShadow.offsetX + 'px' + ' ' + outerShadow.offsetY + 'px' + ' ';
@@ -634,7 +636,9 @@
         if(imgQuery.attr('src') != imgUrl) {
             imgQuery[0].onload = function() {
                 _updateClass();
-                imgQuery[0].onload = undefined;
+                // IE 8 can't set onload to undefined
+                if($.browser.msie && $.browser.version <= 8) imgQuery[0].onload = function() { };
+                else imgQuery[0].onload = undefined;
             };
         } else {
             _updateClass();

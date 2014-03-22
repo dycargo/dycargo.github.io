@@ -176,7 +176,10 @@
             var itemNum = $ax.repeater.getItemIdFromElementId(elementId);
             var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);
             // Repeater references self, constantly if it is treated as its own parent in this case infinite recursion occurs.
-            if(parentRepeater == scriptId) parentRepeater = undefined;
+            if(parentRepeater == scriptId) {
+                parentRepeater = undefined;
+                itemNum = '';
+            }
             
             if(parentRepeater) {
                 parentRepeater = $ax.repeater.createElementId(parentRepeater, itemNum);
@@ -191,7 +194,8 @@
                 if(!parentRepeater || masterRepeater) parent = masterId;
             }
 
-            var parentDynamicPanel = $obj(elementId).parentDynamicPanel;
+            var obj = $obj(elementId);
+            var parentDynamicPanel = obj.parentDynamicPanel;
             if(parentDynamicPanel) {
                 // Make sure the parent if not parentRepeater, or dynamic panel is also in that repeater
                 // If there is a parent master, the dynamic panel must be in it, otherwise parentDynamicPanel would be undefined.
@@ -199,9 +203,7 @@
                 panelPath[panelPath.length] = parentDynamicPanel;
                 var panelId = $ax.getElementIdFromPath(panelPath, {itemNum: itemNum});
                 var panelRepeater = $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(panelId));
-                if(!parentRepeater || panelRepeater) {
-                    parent = $ax.visibility.GetPanelState(panelId);
-                }
+                if(!parentRepeater || panelRepeater) return panelId + '_state' + obj.panelIndex;
             }
 
             return parent;

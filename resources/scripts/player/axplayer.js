@@ -28,16 +28,17 @@ function setUpController() {
     //-----------------------------------------
     var _globalVars = {};
 
-    var _getLinkUrl = function(baseUrl) {
+    var _getLinkUrl = function(baseUrl, viewId) {
         var toAdd = '';
-        for (var globalVarName in _globalVars) {
+        for(var globalVarName in _globalVars) {
             var val = _globalVars[globalVarName];
-            if (val != null && val.length > 0) {
-                if (toAdd.length > 0) toAdd += '&';
+            if(val != null && val.length > 0) {
+                if(toAdd.length > 0) toAdd += '&';
                 toAdd += globalVarName + '=' + encodeURIComponent(val);
             }
         }
-        return toAdd.length > 0 ? baseUrl + '#' + toAdd + "&CSUM=1" : baseUrl;
+        var viewOverride = viewId ? '&AXVIEWIDOVERRIDE=' + viewId : '';
+        return toAdd.length > 0 || viewId ? baseUrl + '#' + toAdd + viewOverride + '&CSUM=1' : baseUrl;
     };
     $axure.getLinkUrlWithVars = _getLinkUrl;
 
@@ -59,7 +60,7 @@ function setUpController() {
     // this method should test if it is actually a axure rp page being loaded and properly set
     // up all the controller for the page if it is
     // ---------------------------------------------
-    _page.navigate = function (url, includeVariables) {
+    _page.navigate = function (url, includeVariables, viewId) {
         var mainFrame = document.getElementById("mainFrame");
         //var mainFrame = window.parent.mainFrame;
         // if this is a relative url...
@@ -75,7 +76,7 @@ function setUpController() {
             mainFrame.contentWindow.location.href = urlToLoad;
             return;
         }
-        var urlWithVars = $axure.getLinkUrlWithVars(urlToLoad);
+        var urlWithVars = $axure.getLinkUrlWithVars(urlToLoad, viewId);
         var currentData = $axure.messageCenter.getState('page.data');
         var currentUrl = currentData && currentData.location;
         if(currentUrl && currentUrl.indexOf('#') != -1) currentUrl = currentUrl.substring(0, currentUrl.indexOf('#'))

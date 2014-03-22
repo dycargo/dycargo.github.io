@@ -44,8 +44,10 @@ var OS_MAC = false;
     (function() {
         if (!CHROME_5_LOCAL) {
             var topAxureWindow = window;
-            while (topAxureWindow.parent && topAxureWindow.parent !== topAxureWindow
-                && topAxureWindow.parent.$axure) topAxureWindow = topAxureWindow.parent;
+            try {
+                while(topAxureWindow.parent && topAxureWindow.parent !== topAxureWindow
+                    && topAxureWindow.parent.$axure) topAxureWindow = topAxureWindow.parent;
+            } catch(e) {}
             _topMessageCenter = topAxureWindow.$axure.messageCenter;
         }
     })();

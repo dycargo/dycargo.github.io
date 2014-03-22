@@ -7,7 +7,7 @@
     "linkFlowsToPages":true,
     "linkFlowsToPagesNewWindow":true,
     "hideAddress":false,
-    "preventScroll":false,
+    "preventScroll":true,
     "useLabels":false,
     "enabledViewIds":[],
     "logoImagePath":"data/logo.jpg",
@@ -51,7 +51,7 @@
     "defaultStyles":{
       "buttonShape":{
         "id":"6d4da3832d094785988f0cba6694d7f1",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -110,7 +110,7 @@
             "a":0.349019607843137}}},
       "paragraph":{
         "id":"e7b137ecf68342c1a61e7a0e7dadf60f",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -169,7 +169,7 @@
             "a":0.349019607843137}}},
       "h1":{
         "id":"ab0a993e3d61436685be7bb762a43f97",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"32px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -228,7 +228,7 @@
             "a":0.349019607843137}}},
       "h2":{
         "id":"ae8ae916515a48e0a19731a8c4f05b66",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"24px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -287,7 +287,7 @@
             "a":0.349019607843137}}},
       "h3":{
         "id":"72a70e5e29a74f4e82404aaed486cc80",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"18px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -346,7 +346,7 @@
             "a":0.349019607843137}}},
       "h4":{
         "id":"bc4edf48a1e149ba8133e5a3775dd8a8",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"14px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -405,7 +405,7 @@
             "a":0.349019607843137}}},
       "h5":{
         "id":"775a2319b42d4e9ea1486f09a9acd75b",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -464,7 +464,7 @@
             "a":0.349019607843137}}},
       "h6":{
         "id":"aed973e3a0764d47851c1b70951c3dba",
-        "fontName":"'Arial Negreta', 'Arial'",
+        "fontName":"'Arial Bold', 'Arial'",
         "fontSize":"10px",
         "fontWeight":"700",
         "fontStyle":"normal",
@@ -523,7 +523,7 @@
             "a":0.349019607843137}}},
       "imageBox":{
         "id":"7df06c8efca44e66a1ddaeac3ef6eeab",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -601,7 +601,7 @@
         "id":"ad1812e4c8d54dec955fb7239bc6eb86"},
       "textBox":{
         "id":"920a7d0f5869443bbb68e37ff478c8b0",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -660,7 +660,7 @@
             "a":0.349019607843137}}},
       "textArea":{
         "id":"fec00e60b7524be4bd30127263a68f24",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -719,7 +719,7 @@
             "a":0.349019607843137}}},
       "comboBox":{
         "id":"3f8e7e3282f84498917ba104055e39f9",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -778,7 +778,7 @@
             "a":0.349019607843137}}},
       "listBox":{
         "id":"7d11b3ef60ed4df58ae607a9c69827bd",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -837,7 +837,7 @@
             "a":0.349019607843137}}},
       "checkbox":{
         "id":"ef4a925711d9401e8c0a1ac272ba6417",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -896,7 +896,7 @@
             "a":0.349019607843137}}},
       "radioButton":{
         "id":"0f252dfc61df4b81b3995f0a547e8e95",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -955,7 +955,7 @@
             "a":0.349019607843137}}},
       "flowShape":{
         "id":"80763981df5c4a3abc886a21963a39be",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1021,7 +1021,7 @@
             "a":0.349019607843137}}},
       "treeNodeObject":{
         "id":"c202eca54f93464889137d1b1a5d2eda",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1080,7 +1080,7 @@
             "a":0.349019607843137}}},
       "button":{
         "id":"5518cc5bb6cf46c3bfe28979208ac216",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1139,7 +1139,7 @@
             "a":0.349019607843137}}},
       "imageMapRegion":{
         "id":"0db01162f2cc435ea8e2e664a6c7ec57",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1198,7 +1198,7 @@
             "a":0.349019607843137}}},
       "inlineFrame":{
         "id":"fba1e8ea39984b0d9e76ebab6e85c2fc",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1257,7 +1257,7 @@
             "a":0.349019607843137}}},
       "dynamicPanel":{
         "id":"933fc57de0104a6a806b04d05fd778b6",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1316,7 +1316,7 @@
             "a":0.349019607843137}}},
       "referenceDiagramObject":{
         "id":"69fa6b1d33454d84874d66727c784139",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1375,7 +1375,7 @@
             "a":0.349019607843137}}},
       "repeater":{
         "id":"31c3216b3b0a406892c2b80350bdcb2a",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1434,7 +1434,7 @@
             "a":0.349019607843137}}},
       "table":{
         "id":"f97ad2f92d4c46d88d5ed6bc95db373e",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1493,7 +1493,7 @@
             "a":0.349019607843137}}},
       "tableCell":{
         "id":"543ab1a1ea0641a29a4c0debc4b36d0b",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1552,7 +1552,7 @@
             "a":0.349019607843137}}},
       "menuObject":{
         "id":"c14df641929b4fa5a4cfb0f4b645c2e6",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1611,7 +1611,7 @@
             "a":0.349019607843137}}},
       "horizontalLine":{
         "id":"0dd1399f32074174ac15a205579b9b9f",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1670,7 +1670,7 @@
             "a":0.349019607843137}}},
       "verticalLine":{
         "id":"1eda407a5145405783d7d54bd8520f9a",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",
@@ -1729,7 +1729,7 @@
             "a":0.349019607843137}}},
       "connector":{
         "id":"e8566698ff2d400eb04407cf3586d360",
-        "fontName":"'Arial Normal', 'Arial'",
+        "fontName":"'Arial Regular', 'Arial'",
         "fontSize":"13px",
         "fontWeight":"400",
         "fontStyle":"normal",

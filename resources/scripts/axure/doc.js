@@ -263,13 +263,11 @@
 
             elementId = _getParentElement(elementId);
 
-            var itemId = $ax.repeater.getItemIdFromElementId(elementId);
-            if(!itemId) return { valid: false };
-
+            var index = $ax.repeater.getItemIdFromElementId(elementId);
+            if(!index) return { valid: false };
 
             var item = { valid: true };
 
-            var index = $ax.repeater.getItemIdFromElementId(elementId);
             var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);
             var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);
             item.repeater = _getWidgetInfo(repeaterId);
@@ -327,12 +325,12 @@
             }
 
             // repeater only props
-            if(obj.type == 'repeater' && repeaterIdToItemIds[elementId]) {
-                widget.visibleitemcount = repeaterIdToItemIds[elementId].length;
-                widget.itemcount = $ax.repeater.getFilteredDataCount(elementId);
-                widget.datacount = $ax.repeater.getDataCount(elementId);
-                widget.pagecount = $ax.repeater.getPageCount(elementId);
-                widget.pageindex = $ax.repeater.getPageIndex(elementId);
+            if(obj.type == 'repeater') {
+                widget.visibleitemcount = repeaterIdToItemIds[scriptId] ? repeaterIdToItemIds[scriptId].length : 0;
+                widget.itemcount = $ax.repeater.getFilteredDataCount(scriptId);
+                widget.datacount = $ax.repeater.getDataCount(scriptId);
+                widget.pagecount = $ax.repeater.getPageCount(scriptId);
+                widget.pageindex = $ax.repeater.getPageIndex(scriptId);
             }
 
             widget.left = widget.x;
@@ -504,7 +502,9 @@
                 } else if(to.target == "parentFrame") {
                     targetLocation = parent.location;
                 } else if(to.target == "frame") {
-                    targetLocation = to.frame.contentWindow.location;
+//                    targetLocation = to.frame.contentWindow.location;
+                    $(to.frame).attr('src', targetUrl || 'about:blank');
+                    return;
                 }
 
                 if(!_needsReload(targetLocation, to.url)) {
@@ -520,6 +520,18 @@
                 includeVariables: arguments[1]
             });
         }
+    };
+
+    $ax.public.getArgs = $ax.getArgs = function() {
+        var args = {};
+        if(window.location.search) {
+            var pairs = window.location.search.slice(1).split('&');
+            pairs.forEach(function(pair) {
+                pair = pair.split('=');
+                args[pair[0]] = decodeURIComponent(pair[1] || '');
+            });
+        }
+        return args;
     };
 
     var _needsReload = function(oldLocation, newBaseUrl) {

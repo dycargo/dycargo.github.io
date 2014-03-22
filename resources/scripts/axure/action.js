@@ -34,13 +34,14 @@
     _action.refreshStart = function(repeaterId) { _refreshing = repeaterId; };
     _action.refreshEnd = function() { _refreshing = undefined; };
 
-    var _repeatersToRefeash = _action.repeatersToRefresh = [];
+    // TODO: [ben] Consider moving this to repeater.js
+    var _repeatersToRefresh = _action.repeatersToRefresh = [];
     var _ignoreAction = function(repeaterId) {
         return _refreshing == repeaterId;
     };
 
     var _addRefresh = function(repeaterId) {
-        if(_repeatersToRefeash.indexOf(repeaterId) == -1) _repeatersToRefeash.push(repeaterId);
+        if(_repeatersToRefresh.indexOf(repeaterId) == -1) _repeatersToRefresh.push(repeaterId);
     };
 
     var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {
@@ -87,6 +88,7 @@
         eventInfo.link = true;
 
         if(action.linkType != 'frame') {
+            var includeVars = _includeVars(action.target, eventInfo);
             if(action.target.targetType == "reloadPage") {
                 $ax.reload(action.target.includeVariables);
             } else if(action.target.targetType == "backUrl") {
@@ -103,14 +105,14 @@
                     $ax.navigate({
                         url: url,
                         target: action.linkType,
-                        includeVariables: action.target.includeVariables,
+                        includeVariables: includeVars,
                         popupOptions: action.popup
                     });
                 } else {
                     $ax.navigate({
                         url: url,
                         target: action.linkType,
-                        includeVariables: action.target.includeVariables
+                        includeVariables: includeVars
                     });
                 }
             }
@@ -120,17 +122,32 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
+    var _includeVars = function(target, eventInfo) {
+        if(target.includeVariables) return true;
+        // If it is a url literal, that is a string literal, that has only 1 sto, that is an item that is a page, include vars.
+        if(target.urlLiteral) {
+            var literal = target.urlLiteral;
+            var sto = literal.stos[0];
+            if(literal.exprType == 'stringLiteral' && literal.value.indexOf('[[') == 0 && literal.value.indexOf(']]' == literal.value.length - 2) && literal.stos.length == 1 && sto.sto == 'item' && eventInfo.item) {
+                var data = $ax.repeater.getData(eventInfo.item.repeater.elementId, eventInfo.item.index, sto.name, 'data');
+                if(data && data.type == 'page') return true;
+            }
+        }
+        return false;
+    };
+
     var linkFrame = function(eventInfo, action) {
         for(var i = 0; i < action.framesToTargets.length; i++) {
             var framePath = action.framesToTargets[i].framePath;
             var target = action.framesToTargets[i].target;
+            var includeVars = _includeVars(target, eventInfo);
 
             var url = target.url;
             if(!url && target.urlLiteral) {
                 url = $ax.expr.evaluateExpr(target.urlLiteral, eventInfo, true);
             }
 
-            $ax('#' + $ax.getElementIdsFromPath(framePath, eventInfo)[0]).openLink(url, target.includeVariables);
+            $ax('#' + $ax.getElementIdsFromPath(framePath, eventInfo)[0]).openLink(url, includeVars);
         }
     };
 
@@ -456,6 +473,12 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
+    _action.repeaterInfoNames = { addItemsToDataSet: 'dataSetsToAddTo', deleteItemsFromDataSet: 'dataSetItemsToRemove', updateItemsInDataSet: 'dataSetsToUpdate',
+        addFilterToRepeater: 'repeatersToAddFilter', removeFilterFromRepeater: 'repeatersToRemoveFilter',
+        addSortToRepeater: 'repeaterToAddSort', removeSortFromRepeater: 'repeaterToRemoveSort',
+        setRepeaterToPage: 'repeatersToSetPage', setItemsPerRepeaterPage: 'repeatersToSetItemCount'
+    };
+
     _actionHandlers.addItemsToDataSet = function(eventInfo, actions, index) {
         var action = actions[index];
         for(var i = 0; i < action.dataSetsToAddTo.length; i++) {
@@ -619,13 +642,25 @@
     };
 
     _actionHandlers.refreshRepeater = function(eventInfo, actions, index) {
-        // This should not be doing anything right now. We refresh automatically
-        //        var action = actions[index];
-        //        for(var i = 0; i < action.repeatersToRefresh.length; i++) {
-        //            $ax.repeater.refreshRepeater(action.repeatersToRefresh[i], eventInfo);
-        //        }
+        // We use this as a psudo action now.
+        var action = actions[index];
+        for(var i = 0; i < action.repeatersToRefresh.length; i++) {
+            _tryRefreshRepeater($ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[i], eventInfo);
+        }
 
         _dispatchAction(eventInfo, actions, index + 1);
+    };
+
+    var _tryRefreshRepeater = function(id, eventInfo) {
+        var idIndex = _repeatersToRefresh.indexOf(id);
+        if(idIndex == -1) return;
+
+        $ax.splice(_repeatersToRefresh, idIndex, 1);
+        $ax.repeater.refreshRepeater(id, eventInfo);
+    };
+
+    _action.tryRefreshRepeaters = function(ids, eventInfo) {
+        for(var i = 0; i < ids.length; i++) _tryRefreshRepeater(ids[i], eventInfo);
     };
 
     _actionHandlers.scrollToWidget = function(eventInfo, actions, index) {
@@ -713,7 +748,9 @@
         var action = actions[index];
         if(action.objectPaths.length > 0) {
             var elementIds = $ax.getElementIdsFromPath(action.objectPaths[0], eventInfo);
-            if(elementIds.length > 0) $ax('#' + elementIds[0]).focus();
+            if(elementIds.length > 0) {
+                $ax('#' + elementIds[0]).focus();
+            }
         }
 
         _dispatchAction(eventInfo, actions, index + 1);

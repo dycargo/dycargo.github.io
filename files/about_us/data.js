@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"about_us.html",
-  "generationDate":new Date(1394806028318.24),
+  "generationDate":new Date(1395490572548.85),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -51,8 +51,8 @@
               "x":564,
               "y":200},
             "size":{
-              "width":420,
-              "height":110}},
+              "width":436,
+              "height":100}},
           "adaptiveStyles":{
 },
           "objects":[{
@@ -67,8 +67,8 @@
                   "x":564,
                   "y":200},
                 "size":{
-                  "width":420,
-                  "height":110}},
+                  "width":436,
+                  "height":100}},
               "adaptiveStyles":{
 }}],
           "images":{
@@ -128,7 +128,7 @@
                   "isNewIfGroup":false,
                   "actions":[{
                       "action":"linkWindow",
-                      "description":"在 当前窗口 打开 https://www.facebook.com/dycargo",
+                      "description":"Open https://www.facebook.com/dycargo in Current Window",
                       "target":{
                         "targetType":"webUrl",
                         "urlLiteral":{
@@ -215,7 +215,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"应用字体",
+        "fontName":"Applied Font",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -254,7 +254,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"应用字体",
+        "fontName":"Applied Font",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -336,7 +336,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":396},
               "size":{
                 "width":100,
@@ -353,7 +353,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":396},
                   "size":{
                     "width":100,
@@ -368,7 +368,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 About us",
+                        "description":"Open About us in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"about_us.html",
@@ -386,7 +386,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":496},
               "size":{
                 "width":120,
@@ -403,7 +403,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":496},
                   "size":{
                     "width":120,
@@ -418,7 +418,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 Tailored services",
+                        "description":"Open Tailored services in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"tailored_services.html",
@@ -436,7 +436,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":596},
               "size":{
                 "width":100,
@@ -453,7 +453,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":596},
                   "size":{
                     "width":100,
@@ -468,7 +468,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 Yiwu roadmap",
+                        "description":"Open Yiwu roadmap in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"yiwu_roadmap.html",
@@ -486,7 +486,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":800},
               "size":{
                 "width":100,
@@ -503,7 +503,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":800},
                   "size":{
                     "width":100,
@@ -518,7 +518,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 Contact us",
+                        "description":"Open Contact us in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"contact_us.html",
@@ -536,7 +536,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":696},
               "size":{
                 "width":100,
@@ -553,7 +553,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":696},
                   "size":{
                     "width":100,
@@ -568,7 +568,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 Cooperation",
+                        "description":"Open Cooperation in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"cooperation.html",
@@ -586,7 +586,7 @@
             "style":{
               "fontSize":"14px",
               "location":{
-                "x":301,
+                "x":259,
                 "y":296},
               "size":{
                 "width":100,
@@ -603,7 +603,7 @@
                 "style":{
                   "fontSize":"14px",
                   "location":{
-                    "x":301,
+                    "x":259,
                     "y":296},
                   "size":{
                     "width":100,
@@ -618,7 +618,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"在 当前窗口 打开 index",
+                        "description":"Open index in Current Window",
                         "target":{
                           "targetType":"page",
                           "url":"index.html",
@@ -732,7 +732,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"应用字体",
+        "fontName":"Applied Font",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -790,7 +790,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"应用字体",
+        "fontName":"Applied Font",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },

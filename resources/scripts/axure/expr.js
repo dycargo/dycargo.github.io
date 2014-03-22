@@ -220,7 +220,7 @@ $axure.internal(function($ax) {
             var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');
 
             var obj = $jobj(inputId);
-            if(obj.val() == value) return;
+            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;
             obj.val(value);
             $ax.placeholderManager.updatePlaceholder(elementId, !value);
             if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);
@@ -309,6 +309,7 @@ $axure.internal(function($ax) {
     };
 
     _exprFunctions.GetWidgetText = function(ids) {
+        if($ax.placeholderManager.isActive(ids[0])) return '';
         var input = $ax.INPUT(ids[0]);
         return $ax('#' + ($jobj(input).length ? input : ids[0])).text();
     };
@@ -324,7 +325,7 @@ $axure.internal(function($ax) {
     _exprFunctions.GetWidgetValueLength = function(ids) {
         var id = ids[0];
         if(!id) return undefined;
-
+        if($ax.placeholderManager.isActive(id)) return 0;
         var obj = $jobj($ax.INPUT(id));
         if(!obj.length) obj = $jobj(id);
         return obj[0].value.length;

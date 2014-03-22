@@ -9,6 +9,7 @@
 
     $ax.drag.StartDragWidget = function(event, id) {
         $ax.setjBrowserEvent(jQuery.Event(event));
+        if(event.donotdrag) return;
 
         var x, y;
         var tg;
@@ -55,7 +56,7 @@
 
     var _dragWidget = function(event) {
         $ax.setjBrowserEvent(jQuery.Event(event));
-        
+
         var x, y;
         if($.browser.msie) {
             x = window.event.clientX + window.document.documentElement.scrollLeft + window.document.body.scrollLeft;
@@ -103,17 +104,24 @@
     };
 
     var _suppressClickAfterDrag = function(event) {
+        _removeSuppressEvents();
+        
+        $ax.legacy.SuppressBubble(event);
+    };
+
+    var _removeSuppressEvents = function() {
         if($.browser.msie) {
             window.event.srcElement.detachEvent("onclick", _suppressClickAfterDrag);
+            widgetDragInfo.targetWidget.detachEvent("onmousemove", _removeSuppressEvents);
         } else {
             window.document.removeEventListener("click", _suppressClickAfterDrag, true);
+            window.document.removeEventListener("mousemove", _removeSuppressEvents, true);
         }
-        $ax.legacy.SuppressBubble(event);
     };
 
     var _stopDragWidget = function(event) {
         $ax.setjBrowserEvent(jQuery.Event(event));
-        
+
         var tg;
         if($.browser.msie) {
             window.document.detachEvent("onmousemove", _dragWidget);
@@ -159,6 +167,12 @@
                 } else {
                     window.document.addEventListener("click", _suppressClickAfterDrag, true);
                 }
+
+                if($.browser.msie && widgetDragInfo.targetWidget) {
+                    widgetDragInfo.targetWidget.attachEvent("onmousemove", _removeSuppressEvents);
+                } else {
+                    window.document.addEventListener("mousemove", _removeSuppressEvents, true);
+                }
             }
         }
 
@@ -193,12 +207,12 @@
         return 600000;
     };
 
-//    $ax.drag.GetCursorRectangles = function() {
-//        var rects = new Object();
-//        rects.lastRect = new Rectangle($ax.lastMouseLocation.x, $ax.lastMouseLocation.y, 1, 1);
-//        rects.currentRect = new Rectangle($ax.mouseLocation.x, $ax.mouseLocation.y, 1, 1);
-//        return rects;
-//    };
+    //    $ax.drag.GetCursorRectangles = function() {
+    //        var rects = new Object();
+    //        rects.lastRect = new Rectangle($ax.lastMouseLocation.x, $ax.lastMouseLocation.y, 1, 1);
+    //        rects.currentRect = new Rectangle($ax.mouseLocation.x, $ax.mouseLocation.y, 1, 1);
+    //        return rects;
+    //    };
 
     //    $ax.drag.GetWidgetRectangles = function(id) {
     //        var widget = window.document.getElementById(id);

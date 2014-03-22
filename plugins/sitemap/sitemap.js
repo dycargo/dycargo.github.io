@@ -49,8 +49,13 @@
             currentPageLoc = $axure.page.location.split("#")[0];
             var decodedPageLoc = decodeURI(currentPageLoc);
             var nodeUrl = decodedPageLoc.substr(decodedPageLoc.lastIndexOf('/') ? decodedPageLoc.lastIndexOf('/') + 1 : 0);
-            currentPlayerLoc = $(location).attr('href').split("#")[0].split("?")[0];
-            currentPageHashString = '#p=' + nodeUrl.substr(0, nodeUrl.lastIndexOf('.'));
+
+            var nextPlayerLoc = $(location).attr('href').split("#")[0].split("?")[0];
+            var nextPageHashString = '#p=' + nodeUrl.substr(0, nodeUrl.lastIndexOf('.'));
+            if(nextPlayerLoc == currentPlayerLoc && nextPageHashString == currentPageHashString) return;
+
+            currentPlayerLoc = nextPlayerLoc;
+            currentPageHashString = nextPageHashString;
 
             setVarInCurrentUrlHash('p', nodeUrl.substring(0, nodeUrl.lastIndexOf('.html')));
 
@@ -107,7 +112,8 @@
                 }
             }
 
-            $('#mainFrame').focus();
+            var main = $('#mainFrame');
+            if(document.activeElement != main[0]) main.focus();
 
             return false;
         });
@@ -231,7 +237,11 @@
     }
 
     function node_click(event) {
-        $axure.page.navigate(this.getAttribute('nodeUrl'), true);
+        navigate(this.getAttribute('nodeUrl'), getHashStringVar(ADAPTIVE_VIEW_VAR_NAME));
+    }
+
+    function navigate(url, viewId) {
+        $axure.page.navigate(url, true, viewId);
     }
 
     function links_click(event) {
@@ -334,22 +344,12 @@
         $('.checkedAdaptive').removeClass('checkedAdaptive');
         $(this).find('.adaptiveCheckboxDiv').addClass('checkedAdaptive');
 
-        currentPageLoc = $axure.page.location.split("#")[0];
-        var decodedPageLoc = decodeURI(currentPageLoc);
-        var nodeUrl = decodedPageLoc.substr(decodedPageLoc.lastIndexOf('/') ? decodedPageLoc.lastIndexOf('/') + 1 : 0);
-        var adaptiveData = {
-            src: nodeUrl
-        };
+        navigate($axure.page.location.split('#')[0], currVal != 'auto' ? currVal : undefined);
 
         if(currVal == 'auto') {
-            $axure.messageCenter.postMessage('setAdaptiveAuto', adaptiveData);
-
             //Remove view in hash string if one is set
             deleteVarFromCurrentUrlHash(ADAPTIVE_VIEW_VAR_NAME);
         } else {
-            adaptiveData.view = currVal;
-            $axure.messageCenter.postMessage('switchAdaptiveView', adaptiveData);
-
             //Set current view in hash string so that it can be maintained across reloads
             setVarInCurrentUrlHash(ADAPTIVE_VIEW_VAR_NAME, currVal);
         }

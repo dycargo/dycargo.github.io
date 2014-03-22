@@ -15,6 +15,7 @@ $axure.internal(function($ax) {
         || navigator.userAgent.match(/iPad/i)
         || navigator.userAgent.match(/iPod/i)
         || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Tablet PC/i)
         || navigator.userAgent.match(/Windows Phone/i);
 
     if(!check && _supports.mobile) {
@@ -138,9 +139,11 @@ $axure.internal(function($ax) {
 
     var preventDefaultEvents = ['OnContextMenu', 'OnKeyUp', 'OnKeyDown'];
     var allowBubble = ['OnFocus', 'OnResize', 'OnMouseOut', 'OnMouseOver'];
+    var canClick = true;
 
     var _handleEvent = $ax.event.handleEvent = function(elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {
         var eventDescription = axEventObject.description;
+        if(!canClick && eventDescription == 'OnClick') return;
         // If you are supposed to suppress, do that right away.
         if(suppressedEventStatus[eventDescription]) {
             return;
@@ -157,17 +160,37 @@ $axure.internal(function($ax) {
             var caseGroups = [];
             var currentCaseGroup = [];
             caseGroups[0] = currentCaseGroup;
+
+            // Those refreshes not after a wait
+            var guaranteedRefreshes = {};
+
+            var caseGroupIndex = 0;
             for(var i = 0; i < axEventObject.cases.length; i++) {
                 var currentCase = axEventObject.cases[i];
-                if(currentCase.isNewIfGroup) {
+                if(currentCase.isNewIfGroup && i != 0) {
+                    caseGroupIndex++;
                     currentCaseGroup = [];
                     caseGroups[caseGroups.length] = currentCaseGroup;
                 }
                 currentCaseGroup[currentCaseGroup.length] = currentCase;
+
+                for(var j = 0; j < currentCase.actions.length; j++) {
+                    var action = currentCase.actions[j];
+                    if(action.action == 'wait') break;
+                    if(action.action != 'refreshRepeater') continue;
+                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {
+                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];
+                        guaranteedRefreshes[id] = caseGroupIndex;
+                    }
+                }
             }
 
             for(var i = 0; i < caseGroups.length; i++) {
-                bubble = _handleCaseGroup(eventInfo, caseGroups[i]) && bubble;
+                var groupRefreshes = [];
+                for(var key in guaranteedRefreshes) {
+                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;
+                }
+                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;
             }
         } else {
             _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);
@@ -178,12 +201,15 @@ $axure.internal(function($ax) {
         if(!bubble && suppressingEvents[eventDescription]) {
             suppressedEventStatus[suppressingEvents[eventDescription]] = true;
         }
+
+        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.
         var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);
         while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();
         for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);
 
         if(currentEvent && currentEvent.originalEvent) {
             currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventDescription) == -1;
+            currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');
 
             // Prevent default if necessary
             if(currentEvent.originalEvent.handled && preventDefaultEvents.indexOf(eventDescription) != -1) {
@@ -270,15 +296,31 @@ $axure.internal(function($ax) {
         return false;
     };
 
-    var _handleCaseGroup = function(eventInfo, caseGroup) {
+    var _handleCaseGroup = function(eventInfo, caseGroup, groupRefreshes) {
         for(var i = 0; i < caseGroup.length; i++) {
             var currentCase = caseGroup[i];
             if(!currentCase.condition || _processCondition(currentCase.condition, eventInfo)) {
+                for(var j = 0; j < currentCase.actions.length; j++) {
+                    var action = currentCase.actions[j];
+                    if(action.action == 'wait') break;
+                    if(action.action != 'refreshRepeater') continue;
+                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {
+                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[i];
+                        var index = groupRefreshes.indexOf(id);
+                        if(index != -1) $ax.splice(groupRefreshes, index);
+                    }
+                }
+
+                // Any guaranteed refreshes that aren't accounted for must be run still.
+                $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);
 
                 $ax.action.dispatchAction(eventInfo, currentCase.actions);
                 return false;
             }
         }
+
+        // Any guaranteed refreshes that aren't accounted for must be run still.
+        $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);
         return true;
     };
 
@@ -518,6 +560,21 @@ $axure.internal(function($ax) {
                 }
             });
         });
+
+        // Don't drag after mousing down on a plain text object
+        query.filter(function(obj) {
+            return obj.type == 'textArea' || obj.type == 'textBox' || obj.type == 'listBox' || obj.type == 'comboBox' || obj.type == 'checkBox' || obj.type == 'radioButton';
+        }).bind($ax.features.eventNames.mouseDownName, function(event) {
+            event.originalEvent.donotdrag = true;
+        });
+
+        if($ax.features.supports.mobile) {
+            query.bind($ax.features.eventNames.mouseDownName, function(event) { canClick = true; });
+
+            query.filter(function(obj) {
+                return obj.type == 'dynamicPanel';
+            }).scroll(function() { canClick = false; });
+        }
 
         //initialize tree node cursors to default so they will override their parent
         query.filter(function(obj) {
@@ -781,7 +838,7 @@ $axure.internal(function($ax) {
         query.filter(function(diagramObject) {
             return $ax.event.HasTextChanged(diagramObject);
         }).each(function(diagramObject, elementId) {
-            var element = $('#' + elementId);
+            var element = $jobj($ax.INPUT(elementId));
             $ax.updateElementText(elementId, element.val());
             //Key down needed because when holding a key down, key up only fires once, but keydown fires repeatedly.
             //Key up because last mouse down will only show the state before the last character.
@@ -883,6 +940,22 @@ $axure.internal(function($ax) {
 
             return _fireObjectEvent(elementId, 'click', arguments);
         });
+
+        // Init inline frames
+        query.filter(function(obj) {
+            return obj.type == 'inlineFrame';
+        }).each(function(obj, elementId) {
+            var target = obj.target;
+            var url = '';
+            if(target.includeVariables && target.url) {
+                var origSrc = target.url;
+                url = origSrc.toLowerCase().indexOf('http://') == -1 ? $ax.globalVariableProvider.getLinkUrl(origSrc) : origSrc;
+
+            } else if(target.urlLiteral) {
+                url = $ax.expr.evaluateExpr(target.urlLiteral, $ax.getEventInfoFromEvent(undefined, true, elementId), true);
+            }
+            if(url) $jobj(elementId).attr('src', url);
+        });
     };
     $ax.initializeObjectEvents = _initializeObjectEvents;
 
@@ -911,14 +984,16 @@ $axure.internal(function($ax) {
                     if(modifierCodes.indexOf(e.keyCode) == -1) _keyState.keyCode = e.keyCode;
 
                     $ax.setjBrowserEvent(e);
-                    _raiseSyntheticEvent(elementId, 'onKeyDown', false, undefined, true);
+                    if(!elementId) fireEventThroughContainers('onKeyDown', undefined, false, ['page', 'referenceDiagramObject', 'dynamicPanel', 'repeater'], ['page', 'referenceDiagramObject']);
+                    else _raiseSyntheticEvent(elementId, 'onKeyDown', false, undefined, true);
                 });
             });
             handleKeyup(function(query, elementId) {
                 $(query).keyup(function(e) {
                     $ax.setjBrowserEvent(e);
                     // Fire event before updating modifiers.
-                    _raiseSyntheticEvent(elementId, 'onKeyUp', false, undefined, true);
+                    if(!elementId) fireEventThroughContainers('onKeyUp', undefined, false, ['page', 'referenceDiagramObject', 'dynamicPanel', 'repeater'], ['page', 'referenceDiagramObject']);
+                    else _raiseSyntheticEvent(elementId, 'onKeyUp', false, undefined, true);
 
                     _keyState.ctrl = e.ctrlKey;
 
@@ -966,7 +1041,7 @@ $axure.internal(function($ax) {
 
                 $(query).bind('touchend', function(e) {
                     var touch = e.originalEvent && e.originalEvent.changedTouches && e.originalEvent.changedTouches[0];
-                    if(!touch) return;
+                    if(!touch || !tapDownLoc) return;
 
                     var tapUpLoc = [touch.pageX, touch.pageY];
                     var xDiff = tapUpLoc[0] - tapDownLoc[0];
@@ -1077,6 +1152,22 @@ $axure.internal(function($ax) {
     };
     _event.updateMouseLocation = _updateMouseLocation;
 
+    var _leavingState = function(stateId) {
+        var mouseOverIds = _event.mouseOverIds;
+        if(mouseOverIds.length == 0) return;
+
+        var stateQuery = $jobj(stateId);
+        for(var i = mouseOverIds.length - 1; i >= 0; i--) {
+            var id = mouseOverIds[i];
+            if(stateQuery.find('#' + id).length) {
+                $ax.splice(mouseOverIds, $.inArray(id, mouseOverIds), 1);
+                $ax.style.SetWidgetMouseDown(id, false);
+                $ax.style.SetWidgetHover(id, false);
+            }
+        }
+    };
+    _event.leavingState = _leavingState;
+
     var _raiseSyntheticEvent = function(elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {
         // Empty string used when this is an event directly on the page.
         var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);
@@ -1166,9 +1257,20 @@ $axure.internal(function($ax) {
 
     var _viewChangePageAndMasters = function() {
         fireEventThroughContainers('onAdaptiveViewChange', undefined, true, ['page', 'referenceDiagramObject', 'dynamicPanel'], ['page', 'referenceDiagramObject']);
-        $axure.messageCenter.postMessage('adaptiveViewChange', $ax.adaptive.currentViewId);
+        _postAdaptiveViewChanged();
     };
     $ax.viewChangePageAndMasters = _viewChangePageAndMasters;
+
+    var _postAdaptiveViewChanged = function() {
+        //only trigger adaptive view changed if the window is on the mainframe. Also triggered on init, even if default.
+        try {
+            if(window.name == 'mainFrame' ||
+            (!CHROME_5_LOCAL && window.parent.$ && window.parent.$('#mainFrame').length > 0)) {
+                $axure.messageCenter.postMessage('adaptiveViewChange', $ax.adaptive.currentViewId);
+            }
+        } catch(e) { }
+    };
+    $ax.postAdaptiveViewChanged = _postAdaptiveViewChanged;
 
     // Filters include page, referenceDiagramObject, dynamicPanel, and repeater.
     var fireEventThroughContainers = function(eventName, objects, synthetic, searchFilter, callFilter, path, itemId) {
@@ -1252,6 +1354,9 @@ $axure.internal(function($ax) {
             _event.initMobileEvents(function(initTap) { initTap(window, ''); }, function(initMove) { initMove(window, ''); });
             $(window).bind($ax.features.eventNames.mouseDownName, _updateMouseLocation);
             $(window).bind($ax.features.eventNames.mouseUpName, function(e) { _updateMouseLocation(e, true); });
+
+            $(window).scroll(function() { canClick = false; });
+            $(window).mousedown(function() { canClick = true; });
         }
         $(window).bind($ax.features.eventNames.mouseMoveName, _updateMouseLocation);
         $(window).scroll($ax.flyoutManager.reregisterAllFlyouts);

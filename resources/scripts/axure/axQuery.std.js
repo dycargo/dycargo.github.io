@@ -8,12 +8,15 @@ $axure.internal(function($ax) {
     var COMBO_BOX_TYPE = 'comboBox';
     var CHECK_BOX_TYPE = 'checkbox';
     var RADIO_BUTTON_TYPE = 'radioButton';
+    var BUTTON_TYPE = 'button';
     var IMAGE_MAP_REGION_TYPE = 'imageMapRegion';
     var IMAGE_BOX_TYPE = 'imageBox';
     var BUTTON_SHAPE_TYPE = 'buttonShape';
     var FLOW_SHAPE_TYPE = 'flowShape';
     var TREE_NODE_OBJECT_TYPE = 'treeNodeObject';
     var TABLE_CELL_TYPE = 'tableCell';
+
+    var PLAIN_TEXT_TYPES = [TEXT_BOX_TYPE, TEXT_AREA_TYPE, LIST_BOX_TYPE, COMBO_BOX_TYPE, CHECK_BOX_TYPE, RADIO_BUTTON_TYPE, BUTTON_TYPE];
 
     var _addJQueryFunction = function(name) {
         $ax.public.fn[name] = function() {
@@ -401,6 +404,10 @@ $axure.internal(function($ax) {
     var getWidgetText = function(id) {
         var idQuery = $('#' + id);
 
+        if(idQuery.is('input') && (idQuery.attr('type') == 'checkbox' || idQuery.attr('type') == 'radio')) {
+            idQuery = idQuery.parent().find('label').find('div');
+        }
+
         if(idQuery.is('div')) {
             var $rtfObj = idQuery.hasClass('text') ? idQuery : idQuery.find('.text');
             if($rtfObj.length == 0) return undefined;
@@ -415,9 +422,6 @@ $axure.internal(function($ax) {
             });
 
             return textOut;
-        } else if(idQuery.is('input') &&
-            (idQuery.attr('type') == 'checkbox' || idQuery.attr('type') == 'radio')) {
-            return idQuery.parent().find('label').find('.text').text();
         } else {
             return idQuery.val();
         }
@@ -610,6 +614,14 @@ $axure.internal(function($ax) {
                         $axure('#' + childId).enabled(enabled);
                     }
                 }
+                var obj = $obj(elementId);
+                var images = obj.images;
+                if(PLAIN_TEXT_TYPES.indexOf(widgetType) != -1 && images) {
+                    var img = $jobj($ax.repeater.applySuffixToElementId(elementId, '_image_sketch'));
+                    var key = (enabled ? 'normal~' : 'disabled~') + ($ax.adaptive.currentViewId || '');
+                    img.attr('src', images[key]);
+
+                }
                 var jobj = $jobj(elementId);
                 var input = $jobj($ax.INPUT(elementId));
                 if(input.length) jobj = input;
@@ -719,9 +731,12 @@ $axure.internal(function($ax) {
             for(var index = 0; index < elementIds.length; index++) {
                 if($ax.getTypeFromElementId(elementIds[index]) == TREE_NODE_OBJECT_TYPE) {
                     var treeNodeId = elementIds[index];
-                    var childContainerId = elementIds[index] + '_children';
+                    var childContainerId = treeNodeId + '_children';
 
-                    var plusMinusId = 'u' + (parseInt(elementIds[index].substring(1)) + 1);
+                    var scriptId = $ax.repeater.getScriptIdFromElementId(treeNodeId);
+                    var itemId = $ax.repeater.getItemIdFromElementId(treeNodeId);
+                    var plusMinusId = 'u' + (parseInt(scriptId.substring(1)) + 1);
+                    if(itemId) plusMinusId = $ax.repeater.createElementId(plusMinusId, itemId);
                     if($('#' + childContainerId).length == 0 || !$jobj(plusMinusId).hasClass('ax_image'))
                         plusMinusId = '';
 

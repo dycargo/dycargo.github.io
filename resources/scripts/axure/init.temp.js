@@ -14,11 +14,13 @@
         };
 
         //only trigger the page.data setting if the window is on the mainframe
-        if(window.name == 'mainFrame' ||
+        try {
+            if(window.name == 'mainFrame' ||
             (!CHROME_5_LOCAL && window.parent.$ && window.parent.$('#mainFrame').length > 0)) {
-            $axure.messageCenter = $axure.messageCenter;
-            $axure.messageCenter.setState('page.data', pageData);
-        }
+                $axure.messageCenter = $axure.messageCenter;
+                $axure.messageCenter.setState('page.data', pageData);
+            }
+        } catch(e) {}
 
         //        $ax(function(diagramObject) {
         //            return diagramObject.style.opacity && !diagramObject.isContained;
@@ -129,8 +131,9 @@
         $ax.style.initialize();
         $ax.visibility.initialize();
         $ax.dynamicPanelManager.initialize(); //needs to be called after visibility is initialized
-        $ax.loadDynamicPanelsAndMasters();
         $ax.adaptive.initialize();
+        $ax.loadDynamicPanelsAndMasters();
+        $ax.adaptive.loadFinished();
         $ax.repeater.init();
         $ax.style.prefetch();
 

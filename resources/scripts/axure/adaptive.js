@@ -1,5 +1,5 @@
 ﻿$axure.internal(function($ax) {
-    $ax.adaptive = {};
+    var _adaptive = $ax.adaptive = {};
 
     $axure.utils.makeBindable($ax.adaptive, ["viewChanged"]);
 
@@ -8,7 +8,13 @@
     var _idToView;
     var _enabledViews = [];
 
-    var _initialViewToLoad;
+    var _loadFinished = false;
+    $ax.adaptive.loadFinished = function() {
+        if(_loadFinished) return;
+        _loadFinished = true;
+        if($ax.adaptive.currentViewId) $ax.viewChangePageAndMasters();
+        else $ax.postAdaptiveViewChanged();
+    };
 
     var _handleResize = function() {
         if(!_auto) return;
@@ -99,7 +105,7 @@
         }
 
         $ax.adaptive.triggerEvent('viewChanged', {});
-        $ax.viewChangePageAndMasters();
+        if(_loadFinished) $ax.viewChangePageAndMasters();
     };
 
     // gets if input is hidden due to sketch
@@ -330,32 +336,6 @@
         return less || greater;
     };
 
-    $ax.messageCenter.addMessageListener(function(message, data) {
-        if(message == 'setAdaptiveAuto') {
-            _setAuto(true);
-        } else if(message == 'switchAdaptiveView') {
-            var href = window.location.href;
-            var lastSlash = href.lastIndexOf('/');
-            href = href.substring(lastSlash + 1);
-            if(href != data.src) return;
-
-            var view = data.view;
-            if(view == 'default') {
-                view = null;
-            }
-
-            //If the adaptive plugin hasn't been initialized yet then 
-            //save the view to load so that it can get set when initialize occurs
-            if(typeof _idToView != 'undefined') {
-                _setAuto(false);
-                _switchView(view);
-            } else {
-                _initialViewToLoad = view;
-            }
-        }
-    });
-
-
     $ax.adaptive.initialize = function() {
         _views = $ax.document.adaptiveViews;
         _idToView = {};
@@ -371,14 +351,14 @@
                 _enabledViews[_enabledViews.length] = _idToView[enabledViewIds[i]];
             }
 
-            $axure.resize(_handleResize);
-            _handleResize();
-        }
-
-        //If there is a viewToLoad (switchAdaptiveView message was received prior to init), set it now
-        if(typeof _initialViewToLoad != 'undefined') {
-            _setAuto(false);
-            _switchView(_initialViewToLoad);
+            var loadViewId = $ax.globalVariableProvider.viewIdOverride;
+            if(loadViewId) {
+                _setAuto(false);
+                _switchView(loadViewId != 'default' ? loadViewId : '');
+            } else {
+                $axure.resize(_handleResize);
+                _handleResize();
+            }
         }
     };
 });
