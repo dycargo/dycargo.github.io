@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"contact_us.html",
-  "generationDate":new Date(1395490956564.81),
+  "generationDate":new Date(1395491806410.42),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -237,7 +237,46 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/contact_us/u33.png"}}]}},
+            "normal~":"images/contact_us/u33.png"}},
+{
+          "id":"30ca31da88e347748dd1e3c311091745",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":570,
+              "y":656},
+            "size":{
+              "width":290,
+              "height":39},
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"437af14ba50f43a98672bcf4d1cb11de",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":570,
+                  "y":656},
+                "size":{
+                  "width":290,
+                  "height":39},
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/about_us/u33.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -943,4 +982,8 @@
     "e602b55828f94772b8cb115bbc036ebe":{
       "scriptId":"u33"},
     "93997c71ddbb43929a758e0ddc149a09":{
-      "scriptId":"u34"}}});
+      "scriptId":"u34"},
+    "30ca31da88e347748dd1e3c311091745":{
+      "scriptId":"u35"},
+    "437af14ba50f43a98672bcf4d1cb11de":{
+      "scriptId":"u36"}}});

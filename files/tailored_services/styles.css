@@ -378,3 +378,25 @@
   visibility:hidden;
   word-wrap:break-word;
 }
+#u35 {
+  position:absolute;
+  left:580px;
+  top:1370px;
+  width:255px;
+  height:39px;
+}
+#u35_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:255px;
+  height:39px;
+}
+#u36 {
+  position:absolute;
+  left:2px;
+  top:12px;
+  width:251px;
+  visibility:hidden;
+  word-wrap:break-word;
+}

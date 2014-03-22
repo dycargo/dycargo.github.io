@@ -380,3 +380,25 @@
   visibility:hidden;
   word-wrap:break-word;
 }
+#u35 {
+  position:absolute;
+  left:570px;
+  top:656px;
+  width:290px;
+  height:39px;
+}
+#u35_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:290px;
+  height:39px;
+}
+#u36 {
+  position:absolute;
+  left:2px;
+  top:12px;
+  width:286px;
+  visibility:hidden;
+  word-wrap:break-word;
+}

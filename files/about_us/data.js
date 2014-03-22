@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"about_us.html",
-  "generationDate":new Date(1395490956217.79),
+  "generationDate":new Date(1395491806026.4),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -194,7 +194,46 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/about_us/u31.png"}}]}},
+            "normal~":"images/about_us/u31.png"}},
+{
+          "id":"0044943161df4d118ffe79067f6a71d0",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":593,
+              "y":1001},
+            "size":{
+              "width":290,
+              "height":39},
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"d4fafa40a32f4b98ad32c8d792f52d57",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":593,
+                  "y":1001},
+                "size":{
+                  "width":290,
+                  "height":39},
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/about_us/u33.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -896,4 +935,8 @@
     "69ac4fb755bf4444b69a5201aa7a52bf":{
       "scriptId":"u31"},
     "6ca25719a95b41b2bcabcb6e8c7a72a7":{
-      "scriptId":"u32"}}});
+      "scriptId":"u32"},
+    "0044943161df4d118ffe79067f6a71d0":{
+      "scriptId":"u33"},
+    "d4fafa40a32f4b98ad32c8d792f52d57":{
+      "scriptId":"u34"}}});

@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"tailored_services.html",
-  "generationDate":new Date(1395490956292.8),
+  "generationDate":new Date(1395491806105.4),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -227,7 +227,46 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/tailored_services/u33.png"}}]}},
+            "normal~":"images/tailored_services/u33.png"}},
+{
+          "id":"b22fdd725fda4c1fbae134cc2b2b7742",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":580,
+              "y":1370},
+            "size":{
+              "width":255,
+              "height":39},
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"dab4aba97ad14de1addc5a4743db7eea",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":580,
+                  "y":1370},
+                "size":{
+                  "width":255,
+                  "height":39},
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/tailored_services/u35.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -933,4 +972,8 @@
     "305a32a71209413eb002a6fcb029278f":{
       "scriptId":"u33"},
     "f926109a90454032a78b1ef66c0de16b":{
-      "scriptId":"u34"}}});
+      "scriptId":"u34"},
+    "b22fdd725fda4c1fbae134cc2b2b7742":{
+      "scriptId":"u35"},
+    "dab4aba97ad14de1addc5a4743db7eea":{
+      "scriptId":"u36"}}});

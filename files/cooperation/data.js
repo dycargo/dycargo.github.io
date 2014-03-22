@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"cooperation.html",
-  "generationDate":new Date(1395490956499.81),
+  "generationDate":new Date(1395491806306.42),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -1046,7 +1046,46 @@
               "height":40}},
           "adaptiveStyles":{
 },
-          "masterId":"48d86b2629bf42b6b5fe5ea73f1894df"}]}},
+          "masterId":"48d86b2629bf42b6b5fe5ea73f1894df"},
+{
+          "id":"fc37a035280648a28e82a499b0c206ca",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":581,
+              "y":1120},
+            "size":{
+              "width":290,
+              "height":39},
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"e166038734e440d1a01abfd0002501ea",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":581,
+                  "y":1120},
+                "size":{
+                  "width":290,
+                  "height":39},
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/about_us/u33.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -1852,4 +1891,8 @@
         "7f8c2baef61e46d2bdc961b715fd5d31":{
           "scriptId":"u83"},
         "81da1ed11dd642eebd65ea78b814a0d1":{
-          "scriptId":"u84"}}}}});
+          "scriptId":"u84"}}},
+    "fc37a035280648a28e82a499b0c206ca":{
+      "scriptId":"u85"},
+    "e166038734e440d1a01abfd0002501ea":{
+      "scriptId":"u86"}}});

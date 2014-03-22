@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"yiwu_roadmap.html",
-  "generationDate":new Date(1395490956359.8),
+  "generationDate":new Date(1395491806168.41),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -249,7 +249,46 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/yiwu_roadmap/u33.png"}}]}},
+            "normal~":"images/yiwu_roadmap/u33.png"}},
+{
+          "id":"8ad7cb2c0eb645178f45d7ad718fae33",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":592,
+              "y":561},
+            "size":{
+              "width":290,
+              "height":39},
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"945050d7a00c4dc485d0f95b396d8408",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":592,
+                  "y":561},
+                "size":{
+                  "width":290,
+                  "height":39},
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/about_us/u33.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -955,4 +994,8 @@
     "c545bab4edf64133921cb0c4f1fc1e18":{
       "scriptId":"u33"},
     "bf2192903dc548a1b93a7b13b20c1e3e":{
-      "scriptId":"u34"}}});
+      "scriptId":"u34"},
+    "8ad7cb2c0eb645178f45d7ad718fae33":{
+      "scriptId":"u35"},
+    "945050d7a00c4dc485d0f95b396d8408":{
+      "scriptId":"u36"}}});
