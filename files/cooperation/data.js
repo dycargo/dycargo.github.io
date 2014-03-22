@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"cooperation.html",
-  "generationDate":new Date(1395491806306.42),
+  "generationDate":new Date(1395492776284.9),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -1056,7 +1056,7 @@
           "style":{
             "location":{
               "x":581,
-              "y":1120},
+              "y":1122},
             "size":{
               "width":290,
               "height":39},
@@ -1075,7 +1075,7 @@
               "style":{
                 "location":{
                   "x":581,
-                  "y":1120},
+                  "y":1122},
                 "size":{
                   "width":290,
                   "height":39},

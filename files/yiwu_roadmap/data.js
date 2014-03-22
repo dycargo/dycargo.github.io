@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"yiwu_roadmap.html",
-  "generationDate":new Date(1395491806168.41),
+  "generationDate":new Date(1395492776145.89),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -259,7 +259,7 @@
           "style":{
             "location":{
               "x":592,
-              "y":561},
+              "y":562},
             "size":{
               "width":290,
               "height":39},
@@ -278,7 +278,7 @@
               "style":{
                 "location":{
                   "x":592,
-                  "y":561},
+                  "y":562},
                 "size":{
                   "width":290,
                   "height":39},
