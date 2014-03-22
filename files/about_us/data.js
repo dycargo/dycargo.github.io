@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"about_us.html",
-  "generationDate":new Date(1395492776006.88),
+  "generationDate":new Date(1395493945725.78),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -714,10 +714,10 @@
                 "fillType":"solid",
                 "color":0xFF999999},
               "location":{
-                "x":210,
+                "x":0,
                 "y":90},
               "size":{
-                "width":990,
+                "width":1420,
                 "height":1},
               "borderFill":{
                 "fillType":"solid",
@@ -740,10 +740,10 @@
                     "fillType":"solid",
                     "color":0xFF999999},
                   "location":{
-                    "x":210,
+                    "x":0,
                     "y":90},
                   "size":{
-                    "width":990,
+                    "width":1420,
                     "height":1},
                   "borderFill":{
                     "fillType":"solid",

@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"yiwu_roadmap.html",
-  "generationDate":new Date(1395492776145.89),
+  "generationDate":new Date(1395493945891.79),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -769,10 +769,10 @@
                 "fillType":"solid",
                 "color":0xFF999999},
               "location":{
-                "x":210,
+                "x":0,
                 "y":90},
               "size":{
-                "width":990,
+                "width":1420,
                 "height":1},
               "borderFill":{
                 "fillType":"solid",
@@ -795,10 +795,10 @@
                     "fillType":"solid",
                     "color":0xFF999999},
                   "location":{
-                    "x":210,
+                    "x":0,
                     "y":90},
                   "size":{
-                    "width":990,
+                    "width":1420,
                     "height":1},
                   "borderFill":{
                     "fillType":"solid",

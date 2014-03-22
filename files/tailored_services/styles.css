@@ -218,9 +218,9 @@
 }
 #u20 {
   position:absolute;
-  left:210px;
+  left:0px;
   top:90px;
-  width:990px;
+  width:1420px;
   height:1px;
   color:#1E1E1E;
 }
@@ -228,14 +228,14 @@
   position:absolute;
   left:0px;
   top:0px;
-  width:990px;
+  width:1420px;
   height:1px;
 }
 #u21 {
   position:absolute;
   left:2px;
   top:-8px;
-  width:986px;
+  width:1416px;
   visibility:hidden;
   word-wrap:break-word;
 }
