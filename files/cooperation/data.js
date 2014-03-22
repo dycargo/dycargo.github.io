@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"cooperation.html",
-  "generationDate":new Date(1395490572867.87),
+  "generationDate":new Date(1395490956499.81),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
