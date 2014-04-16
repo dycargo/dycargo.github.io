@@ -261,116 +261,72 @@
   visibility:hidden;
   word-wrap:break-word;
 }
-#u24 {
-  position:absolute;
-  left:550px;
-  top:200px;
-  width:454px;
-  height:100px;
-}
-#u24_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:454px;
-  height:100px;
-}
 #u25 {
-  position:absolute;
-  left:2px;
-  top:42px;
-  width:450px;
-  visibility:hidden;
-  word-wrap:break-word;
-}
-#u26 {
-  position:absolute;
-  left:550px;
-  top:1250px;
-  width:454px;
-  height:100px;
-}
-#u26_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:454px;
-  height:100px;
-}
-#u27 {
-  position:absolute;
-  left:2px;
-  top:42px;
-  width:450px;
-  visibility:hidden;
-  word-wrap:break-word;
-}
-#u29 {
   position:absolute;
   left:0px;
   top:1484px;
   width:1420px;
   height:10px;
 }
-#u29_start {
+#u25_start {
   position:absolute;
   left:0px;
   top:-5px;
   width:18px;
   height:20px;
 }
-#u29_end {
+#u25_end {
   position:absolute;
   left:1403px;
   top:-5px;
   width:18px;
   height:20px;
 }
-#u29_line {
+#u25_line {
   position:absolute;
   left:0px;
   top:5px;
   width:1420px;
   height:1px;
 }
-#u31 {
+#u27 {
   position:absolute;
   left:0px;
   top:1494px;
   width:1410px;
   height:30px;
 }
-#u31_img {
+#u27_img {
   position:absolute;
   left:0px;
   top:0px;
   width:1410px;
   height:30px;
 }
-#u32 {
+#u28 {
   position:absolute;
   left:2px;
   top:7px;
   width:1406px;
   word-wrap:break-word;
 }
-#u33 {
+#u29 {
   position:absolute;
   left:500px;
-  top:320px;
+  top:318px;
   width:750px;
   height:880px;
   color:#333333;
   text-align:left;
 }
-#u33_img {
+#u29_img {
   position:absolute;
   left:0px;
   top:0px;
   width:750px;
   height:880px;
 }
-#u34 {
+#u30 {
   position:absolute;
   left:0px;
   top:0px;
@@ -378,21 +334,21 @@
   visibility:hidden;
   word-wrap:break-word;
 }
-#u35 {
+#u31 {
   position:absolute;
   left:580px;
   top:1370px;
   width:255px;
   height:39px;
 }
-#u35_img {
+#u31_img {
   position:absolute;
   left:0px;
   top:0px;
   width:255px;
   height:39px;
 }
-#u36 {
+#u32 {
   position:absolute;
   left:2px;
   top:12px;

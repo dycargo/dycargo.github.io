@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"yiwu_roadmap.html",
-  "generationDate":new Date(1395493945891.79),
+  "generationDate":new Date(1397663865513.11),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -83,7 +83,7 @@
                   "isNewIfGroup":false,
                   "actions":[{
                       "action":"linkWindow",
-                      "description":"Open http://en.yiwugou.com in Current Window",
+                      "description":"在 当前窗口 打开 http://en.yiwugou.com",
                       "target":{
                         "targetType":"webUrl",
                         "urlLiteral":{
@@ -134,7 +134,7 @@
                   "isNewIfGroup":false,
                   "actions":[{
                       "action":"linkWindow",
-                      "description":"Open https://www.facebook.com/dycargo in Current Window",
+                      "description":"在 当前窗口 打开 https://www.facebook.com/dycargo",
                       "target":{
                         "targetType":"webUrl",
                         "urlLiteral":{
@@ -145,40 +145,7 @@
                       "linkType":"current"}]}]}},
           "tabbable":true,
           "images":{
-            "normal~":"images/about_us/u29.png"}},
-{
-          "id":"18780d03c80c49729a2c7aa7649f6f61",
-          "label":"",
-          "type":"imageBox",
-          "styleType":"imageBox",
-          "visible":true,
-          "style":{
-            "location":{
-              "x":550,
-              "y":210},
-            "size":{
-              "width":450,
-              "height":100}},
-          "adaptiveStyles":{
-},
-          "objects":[{
-              "id":"0f3ad08f6ae94570bc2845da621a5455",
-              "label":"",
-              "isContained":true,
-              "type":"richTextPanel",
-              "styleType":"paragraph",
-              "visible":true,
-              "style":{
-                "location":{
-                  "x":550,
-                  "y":210},
-                "size":{
-                  "width":450,
-                  "height":100}},
-              "adaptiveStyles":{
-}}],
-          "images":{
-            "normal~":"images/yiwu_roadmap/u26.png"}},
+            "normal~":"images/about_us/u27.png"}},
 {
           "id":"6e9921f3f1dc4311a236707830f08645",
           "label":"",
@@ -212,7 +179,7 @@
             "paddingBottom":"0",
             "location":{
               "x":510,
-              "y":343},
+              "y":308},
             "size":{
               "width":740,
               "height":80},
@@ -239,7 +206,7 @@
                 "paddingBottom":"0",
                 "location":{
                   "x":510,
-                  "y":343},
+                  "y":308},
                 "size":{
                   "width":740,
                   "height":80},
@@ -249,7 +216,7 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/yiwu_roadmap/u33.png"}},
+            "normal~":"images/yiwu_roadmap/u31.png"}},
 {
           "id":"8ad7cb2c0eb645178f45d7ad718fae33",
           "label":"",
@@ -288,7 +255,7 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/about_us/u33.png"}}]}},
+            "normal~":"images/about_us/u31.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -309,7 +276,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -348,7 +315,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -462,7 +429,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open About us in Current Window",
+                        "description":"在 当前窗口 打开 About us",
                         "target":{
                           "targetType":"page",
                           "url":"about_us.html",
@@ -512,7 +479,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Tailored services in Current Window",
+                        "description":"在 当前窗口 打开 Tailored services",
                         "target":{
                           "targetType":"page",
                           "url":"tailored_services.html",
@@ -562,7 +529,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Yiwu roadmap in Current Window",
+                        "description":"在 当前窗口 打开 Yiwu roadmap",
                         "target":{
                           "targetType":"page",
                           "url":"yiwu_roadmap.html",
@@ -612,7 +579,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Contact us in Current Window",
+                        "description":"在 当前窗口 打开 Contact us",
                         "target":{
                           "targetType":"page",
                           "url":"contact_us.html",
@@ -662,7 +629,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Cooperation in Current Window",
+                        "description":"在 当前窗口 打开 Cooperation",
                         "target":{
                           "targetType":"page",
                           "url":"cooperation.html",
@@ -712,7 +679,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open index in Current Window",
+                        "description":"在 当前窗口 打开 index",
                         "target":{
                           "targetType":"page",
                           "url":"index.html",
@@ -826,7 +793,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -848,7 +815,7 @@
             "images":{
               "start~":"resources/images/transparent.gif",
               "end~":"resources/images/transparent.gif",
-              "line~":"images/index/u27_line.png"}},
+              "line~":"images/index/u25_line.png"}},
 {
             "id":"99b5c8b1cdd14461b0f950bc09b1ab10",
             "label":"",
@@ -884,7 +851,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -923,7 +890,7 @@
                 "adaptiveStyles":{
 }}],
             "images":{
-              "normal~":"images/index/u29.png"}}]}}},
+              "normal~":"images/index/u27.png"}}]}}},
   "objectPaths":{
     "dd6a2dc57345410db741a81b21114c82":{
       "scriptId":"u0",
@@ -977,25 +944,21 @@
       "scriptId":"u24"},
     "62e463ede5e44f55945b168718c3d9eb":{
       "scriptId":"u25"},
-    "18780d03c80c49729a2c7aa7649f6f61":{
-      "scriptId":"u26"},
-    "0f3ad08f6ae94570bc2845da621a5455":{
-      "scriptId":"u27"},
     "6e9921f3f1dc4311a236707830f08645":{
-      "scriptId":"u28",
+      "scriptId":"u26",
       "f2bbaa828a0346da948bd41fa93fdf94":{
-        "scriptId":"u29"},
+        "scriptId":"u27"},
       "99b5c8b1cdd14461b0f950bc09b1ab10":{
-        "scriptId":"u30",
+        "scriptId":"u28",
         "7f8c2baef61e46d2bdc961b715fd5d31":{
-          "scriptId":"u31"},
+          "scriptId":"u29"},
         "81da1ed11dd642eebd65ea78b814a0d1":{
-          "scriptId":"u32"}}},
+          "scriptId":"u30"}}},
     "c545bab4edf64133921cb0c4f1fc1e18":{
-      "scriptId":"u33"},
+      "scriptId":"u31"},
     "bf2192903dc548a1b93a7b13b20c1e3e":{
-      "scriptId":"u34"},
+      "scriptId":"u32"},
     "8ad7cb2c0eb645178f45d7ad718fae33":{
-      "scriptId":"u35"},
+      "scriptId":"u33"},
     "945050d7a00c4dc485d0f95b396d8408":{
-      "scriptId":"u36"}}});
+      "scriptId":"u34"}}});

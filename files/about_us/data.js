@@ -1,6 +1,6 @@
 ﻿$axure.loadCurrentPage({
   "url":"about_us.html",
-  "generationDate":new Date(1395493945725.78),
+  "generationDate":new Date(1397663865377.1),
   "isCanvasEnabled":false,
   "variables":["OnLoadVariable"],
   "page":{
@@ -40,39 +40,6 @@
           "adaptiveStyles":{
 },
           "masterId":"300638b8603e48f5bbcc98a6c99f05fc"},
-{
-          "id":"6c6d621502864acf9ece298d80522017",
-          "label":"",
-          "type":"imageBox",
-          "styleType":"imageBox",
-          "visible":true,
-          "style":{
-            "location":{
-              "x":564,
-              "y":200},
-            "size":{
-              "width":436,
-              "height":100}},
-          "adaptiveStyles":{
-},
-          "objects":[{
-              "id":"65e30ebd3a644589b324e76600f776e9",
-              "label":"",
-              "isContained":true,
-              "type":"richTextPanel",
-              "styleType":"paragraph",
-              "visible":true,
-              "style":{
-                "location":{
-                  "x":564,
-                  "y":200},
-                "size":{
-                  "width":436,
-                  "height":100}},
-              "adaptiveStyles":{
-}}],
-          "images":{
-            "normal~":"images/about_us/u22.jpg"}},
 {
           "id":"4c1e665f60e1467987eb41e55d91eb9f",
           "label":"",
@@ -128,7 +95,7 @@
                   "isNewIfGroup":false,
                   "actions":[{
                       "action":"linkWindow",
-                      "description":"Open https://www.facebook.com/dycargo in Current Window",
+                      "description":"在 当前窗口 打开 https://www.facebook.com/dycargo",
                       "target":{
                         "targetType":"webUrl",
                         "urlLiteral":{
@@ -139,7 +106,7 @@
                       "linkType":"current"}]}]}},
           "tabbable":true,
           "images":{
-            "normal~":"images/about_us/u29.png"}},
+            "normal~":"images/about_us/u27.png"}},
 {
           "id":"69ac4fb755bf4444b69a5201aa7a52bf",
           "label":"",
@@ -194,7 +161,7 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/about_us/u31.png"}},
+            "normal~":"images/about_us/u29.png"}},
 {
           "id":"0044943161df4d118ffe79067f6a71d0",
           "label":"",
@@ -233,7 +200,7 @@
               "adaptiveStyles":{
 }}],
           "images":{
-            "normal~":"images/about_us/u33.png"}}]}},
+            "normal~":"images/about_us/u31.png"}}]}},
   "masters":{
     "300638b8603e48f5bbcc98a6c99f05fc":{
       "packageId":"300638b8603e48f5bbcc98a6c99f05fc",
@@ -254,7 +221,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -293,7 +260,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -407,7 +374,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open About us in Current Window",
+                        "description":"在 当前窗口 打开 About us",
                         "target":{
                           "targetType":"page",
                           "url":"about_us.html",
@@ -457,7 +424,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Tailored services in Current Window",
+                        "description":"在 当前窗口 打开 Tailored services",
                         "target":{
                           "targetType":"page",
                           "url":"tailored_services.html",
@@ -507,7 +474,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Yiwu roadmap in Current Window",
+                        "description":"在 当前窗口 打开 Yiwu roadmap",
                         "target":{
                           "targetType":"page",
                           "url":"yiwu_roadmap.html",
@@ -557,7 +524,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Contact us in Current Window",
+                        "description":"在 当前窗口 打开 Contact us",
                         "target":{
                           "targetType":"page",
                           "url":"contact_us.html",
@@ -607,7 +574,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open Cooperation in Current Window",
+                        "description":"在 当前窗口 打开 Cooperation",
                         "target":{
                           "targetType":"page",
                           "url":"cooperation.html",
@@ -657,7 +624,7 @@
                     "isNewIfGroup":false,
                     "actions":[{
                         "action":"linkWindow",
-                        "description":"Open index in Current Window",
+                        "description":"在 当前窗口 打开 index",
                         "target":{
                           "targetType":"page",
                           "url":"index.html",
@@ -771,7 +738,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -793,7 +760,7 @@
             "images":{
               "start~":"resources/images/transparent.gif",
               "end~":"resources/images/transparent.gif",
-              "line~":"images/index/u27_line.png"}},
+              "line~":"images/index/u25_line.png"}},
 {
             "id":"99b5c8b1cdd14461b0f950bc09b1ab10",
             "label":"",
@@ -829,7 +796,7 @@
         "favicon":null,
         "sketchFactor":"0",
         "colorStyle":"appliedColor",
-        "fontName":"Applied Font",
+        "fontName":"应用字体",
         "borderWidth":"0"},
       "adaptiveStyles":{
 },
@@ -868,7 +835,7 @@
                 "adaptiveStyles":{
 }}],
             "images":{
-              "normal~":"images/index/u29.png"}}]}}},
+              "normal~":"images/index/u27.png"}}]}}},
   "objectPaths":{
     "fddd65eecb63469c9ba7df1806380449":{
       "scriptId":"u0",
@@ -914,29 +881,25 @@
           "scriptId":"u20"},
         "b58c6cc77c0347e38eae0dc3ffb00b84":{
           "scriptId":"u21"}}},
-    "6c6d621502864acf9ece298d80522017":{
-      "scriptId":"u22"},
-    "65e30ebd3a644589b324e76600f776e9":{
-      "scriptId":"u23"},
     "4c1e665f60e1467987eb41e55d91eb9f":{
-      "scriptId":"u24",
+      "scriptId":"u22",
       "f2bbaa828a0346da948bd41fa93fdf94":{
-        "scriptId":"u25"},
+        "scriptId":"u23"},
       "99b5c8b1cdd14461b0f950bc09b1ab10":{
-        "scriptId":"u26",
+        "scriptId":"u24",
         "7f8c2baef61e46d2bdc961b715fd5d31":{
-          "scriptId":"u27"},
+          "scriptId":"u25"},
         "81da1ed11dd642eebd65ea78b814a0d1":{
-          "scriptId":"u28"}}},
+          "scriptId":"u26"}}},
     "ff12cbce46c54b999fb8f4c89c9bf621":{
-      "scriptId":"u29"},
+      "scriptId":"u27"},
     "08366bb9fff34f47a5b57e00d090e071":{
-      "scriptId":"u30"},
+      "scriptId":"u28"},
     "69ac4fb755bf4444b69a5201aa7a52bf":{
-      "scriptId":"u31"},
+      "scriptId":"u29"},
     "6ca25719a95b41b2bcabcb6e8c7a72a7":{
-      "scriptId":"u32"},
+      "scriptId":"u30"},
     "0044943161df4d118ffe79067f6a71d0":{
-      "scriptId":"u33"},
+      "scriptId":"u31"},
     "d4fafa40a32f4b98ad32c8d792f52d57":{
-      "scriptId":"u34"}}});
+      "scriptId":"u32"}}});
